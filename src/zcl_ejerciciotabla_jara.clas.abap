@@ -112,49 +112,35 @@ CLASS zcl_ejerciciotabla_jara IMPLEMENTATION.
 *
 *       append ls_persona to lt_persona.
 *
-*    loop AT lt_persona into ls_persona.
+*    loop AT lt_persona into ls_persona. "no haria falta recorrer la tabla.
 *    endLOOP.
 *    out->write( lt_persona ).
 
 "ejercicio 2
 
-"data lt_libros type table of /dmo/booking.
+*data lt_libros type table of /dmo/booking.
+*data ls_libros type /dmo/booking.
+*
+*select * from /dmo/booking where customer_id = '000594' into table @lt_libros.
 
-"select * from /dmo/booking into table @lt_libros.
-"data ls_libros type /dmo/booking.
 "select * from /dmo/booking into table lt_libros.
 "loop at lt_libros into ls_libros.
- "out->write( lt_libros ).
+* out->write( lt_libros ).
 "endloop.
 
 "ejercicio 3
 
-data lt_libros type table of /dmo/booking.
-data ls_libros type /dmo/booking.
-data ls_total type p deciMALS 3.
-
-select * from /dmo/booking where customer_id = '000594' into table @lt_libros.
-
-loop AT lt_libros into ls_libros.
-  ls_total = ls_total + ls_libros-flight_price.
-endloop.
-out->write( lt_libros ).
-out->write( |El total para el cliente  000594 es: { ls_total }| ).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*data lt_libros type table of /dmo/booking.
+*data ls_libros type /dmo/booking.
+*data ls_total type p deciMALS 3.
+*
+*select * from /dmo/booking where customer_id = '000594' into table @lt_libros.
+*
+*loop AT lt_libros into ls_libros.
+*  ls_total = ls_total + ls_libros-flight_price.
+*endloop.
+*out->write( lt_libros ).
+*out->write( |El total para el cliente  000594 es: { ls_total }| ).
 
 
 
