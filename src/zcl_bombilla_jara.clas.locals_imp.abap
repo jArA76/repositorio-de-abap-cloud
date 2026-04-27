@@ -43,13 +43,13 @@ endmethod.
 
 method encender.
     if i_encend = 'encender'.
-        Estado = 'encendido'.
+        Estado = 'encendida'.
     endif.
 endmethod.
 
 method apagar.
     if i_encend = 'apagar'.
-        Estado = 'apagado'.
+        Estado = 'apagada'.
     endif.
 endmethod.
 

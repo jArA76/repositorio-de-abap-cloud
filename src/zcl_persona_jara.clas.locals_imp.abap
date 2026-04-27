@@ -32,7 +32,7 @@ CLASS zcl_demo_persona DEFINITION.
         EXPORTING
           o_saldo TYPE i,
 
-        ingresar imporTING i_cantidad type i,  "le decimos la cantidad que quiere ingresar
+        ingresar imporTING i_cantidad type i,  "le decimos la cantidad que quiere ingresar, recibe i_cantidad.
         retirar impoRTING i_cantidad type i   "le decimos la cantidad que quiere sacar.
         EXPORTING o_valido   TYPE abap_bool.
 
@@ -43,7 +43,7 @@ ENDCLASS.
 CLASS zcl_demo_persona IMPLEMENTATION.
 
    method constructor.
-    titular = i_titular.
+    titular = i_titular. "mete en titular el valor de i_titular
     saldo = i_saldo.
   ENDMETHOD.
 
