@@ -17,8 +17,8 @@ data:
 
          set_ubicacion importing i_ubicacion type string,
 
-         encender importing i_encend type string,
-         apagar importing i_encend type string.
+         encender importing i_encend type string, "no haria falta importing porque no va a importar nada.
+         apagar importing i_encend type string.   "no haria falta importing porque no va a importar nada.
 
     PROTECTED SECTION.
   PRIVATE SECTION.
@@ -31,14 +31,14 @@ method constructor.
 endmethod.
 
 method get_estado.
-    o_estado = estado.
+    o_estado = estado. "mete lo que haya en estado y lo pasa a o_estado.
 endmethod.
 method get_ubicacion.
     o_ubicacion = ubicacion.
 endmethod.
 
 method set_Ubicacion.
-    ubicacion = i_Ubicacion.
+    ubicacion = i_Ubicacion.  "cuando se llama a este metodo se le pasa i_ubicacion y lo mete en ubicacion
 endmethod.
 
 method encender.
