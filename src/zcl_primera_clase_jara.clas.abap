@@ -33,7 +33,7 @@ CLASS zcl_primera_clase_jara IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 
     DATA lv_numero TYPE i.
-    DATA lo_numero TYPE REF TO zcl_simple.
+    DATA lo_numero TYPE REF TO zcl_primera_clase_jara.
 
     CREATE OBJECT lo_numero.
 

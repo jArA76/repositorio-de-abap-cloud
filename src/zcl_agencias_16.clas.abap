@@ -18,12 +18,12 @@ CLASS zcl_agencias_16 IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 "  Ejercicio de Reservas y Agencias
 
-    TYPES: BEGIN OF ty_reservas,
-             name          TYPE /dmo/agency-name,
-             connection_id TYPE /dmo/booking-connection_id,
-             flight_date   TYPE /dmo/booking-flight_date,
-             flight_price  TYPE /dmo/booking-flight_price,
-           END OF ty_reservas.
+*    TYPES: BEGIN OF ty_reservas,
+*             name          TYPE /dmo/agency-name,
+*             connection_id TYPE /dmo/booking-connection_id,
+*             flight_date   TYPE /dmo/booking-flight_date,
+*             flight_price  TYPE /dmo/booking-flight_price,
+*           END OF ty_reservas.
 
   "  DATA ls_reservas TYPE ty_reservas.
    " DATA lt_reservas TYPE TABLE OF ty_reservas.
@@ -99,11 +99,17 @@ CLASS zcl_agencias_16 IMPLEMENTATION.
 
     " Versión PRO PRO
 
-    SELECT * FROM zcds_reserva
+*    SELECT * FROM zcds_reserva
+*        INTO TABLE @DATA(lt_reservas) UP TO 10 ROWS.
+*    IF sy-subrc = 0.
+*      out->write( lt_reservas ).
+*    ENDIF.
+    SELECT * FROM ZCDS_FLIGHT_16
         INTO TABLE @DATA(lt_reservas) UP TO 10 ROWS.
     IF sy-subrc = 0.
       out->write( lt_reservas ).
     ENDIF.
+
 
 
 

@@ -123,9 +123,9 @@ CLASS zcl_ejerciciotabla_jara IMPLEMENTATION.
 *
 *select * from /dmo/booking where customer_id = '000594' into table @lt_libros.
 
-"select * from /dmo/booking into table lt_libros.
-"loop at lt_libros into ls_libros.
-* out->write( lt_libros ).
+"select * from /dmo/booking into table lt_libros. asi no funciona
+"loop at lt_libros into ls_libros. "no hace falta recorrerla.
+" out->write( lt_libros ).
 "endloop.
 
 "ejercicio 3

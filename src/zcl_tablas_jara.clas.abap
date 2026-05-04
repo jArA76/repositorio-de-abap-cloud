@@ -85,32 +85,32 @@ CLASS zcl_tablas_jara IMPLEMENTATION.
 *lv_price = lv_price + ls_vuelos-price.
 *endloop.
 *
-*out->write( | El total de todos los vuelos es:{ lv_price } | ).
+*out->write( | El importe total de todos los vuelos es:{ lv_price } | ).
 
 
 "otra manera de hacerlo y mas cosas
 
-    DATA lt_vuelos TYPE TABLE OF /dmo/flight. " Declaración de tabla tipo FLIGHT
-    DATA ls_vuelos TYPE /dmo/flight.          " Declaración de estructura tipo FLIGHT
-    DATA lv_total TYPE /dmo/flight-price.       "declaro una variable del tipo de la tabla flight y el campo price.
-    "data lv_total type p leNGTH 16 deCIMALS 2.  "tambien se puede poner asi.
-    SELECT * FROM /dmo/flight WHERE carrier_id = 'AA' INTO TABLE @lt_vuelos.
-    "SELECT * FROM /dmo/flight INTO TABLE @lt_vuelos.
-
-       IF sy-subrc = 0. "si ha ido bien.
-      LOOP AT lt_vuelos INTO ls_vuelos. "recorreme la tabla lt_vuelos y lo que vaya saliendo que lo meta en la estructura ls_vuelo porque quiero recorrerla uno a uno, por eso pone
-      "la estructura porque solo puede almacenar un valor.
-        lv_total = lv_total + ls_vuelos-price.
-      ENDLOOP.
-      out->write( lt_vuelos ).
-      out->write( | La suma de todos los vuelos es { lv_total } | ).
-      else.
-      out->write( 'No existen vuelos' ).
-    ENDIF.
+*    DATA lt_vuelos TYPE TABLE OF /dmo/flight. " Declaración de tabla tipo FLIGHT
+*    DATA ls_vuelos TYPE /dmo/flight.          " Declaración de estructura tipo FLIGHT
+*    DATA lv_total TYPE /dmo/flight-price.       "declaro una variable del tipo de la tabla flight y el campo price.
+*    "data lv_total type p leNGTH 16 deCIMALS 2.  "tambien se puede poner asi.
+*    SELECT * FROM /dmo/flight WHERE carrier_id = 'AA' INTO TABLE @lt_vuelos.
+*    "SELECT * FROM /dmo/flight INTO TABLE @lt_vuelos.
+*
+*       IF sy-subrc = 0. "si ha ido bien.
+*      LOOP AT lt_vuelos INTO ls_vuelos. "recorreme la tabla lt_vuelos y lo que vaya saliendo que lo meta en la estructura ls_vuelo porque quiero recorrerla uno a uno, por eso pone
+*      "la estructura porque solo puede almacenar un valor.
+*        lv_total = lv_total + ls_vuelos-price.
+*      ENDLOOP.
+*      out->write( lt_vuelos ).
+*      out->write( | La suma de todos los vuelos es { lv_total } | ).
+*      else.
+*      out->write( 'No existen vuelos' ).
+*    ENDIF.
 
 
 *SELECT SUM( price ) FROM /dmo/flight INTO @DATA(lv_acumulado). "acumula en una variable el resultado, es una declaracion en linea.
-**    out->write( | El acumulado es { lv_acumulado } | ).
+*    out->write( | El acumulado es { lv_acumulado } | ).
 *
 *    SELECT * FROM /dmo/agency INTO TABLE @DATA(lt_agencias). "acumula el resultado en una tabla declarada en linea.
 *    IF sy-subrc = 0.
