@@ -1,0 +1,27 @@
+managed implementation in class zbp_i_bebidas_16 unique;  //este es el behavior base
+strict ( 1 );
+
+define behavior for ZI_BEBIDAS_16 alias BEBIDASJCD
+persistent table zbebidas_16
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+
+  create;
+  update;
+  delete;
+
+
+
+field ( readonly ) Codigo;
+mapping for zbebidas_16
+{
+Codigo = codigo;
+Nombre = nombre;
+Tipo = tipo;
+Origen = origen;
+Graduacion = graduacion;
+Precio = precio;
+}
+}
