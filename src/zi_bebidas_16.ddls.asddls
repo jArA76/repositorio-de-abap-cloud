@@ -11,5 +11,6 @@ nombre as Nombre,
 tipo as Tipo,
 origen as Origen,
 graduacion as Graduacion,
-precio as Precio
+precio as Precio,
+last_changed_at as LastChangedAt
 }

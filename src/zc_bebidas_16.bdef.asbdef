@@ -1,9 +1,13 @@
 projection;//behavior de consumo
 strict ( 1 );
-
-define behavior for ZC_BEBIDAS_16 alias BEBIDASJCD
+//with draft;
+define behavior for ZC_BEBIDAS_16 alias Bebida
 {
+
+
   use create;
   use update;
   use delete;
+
+
 }
