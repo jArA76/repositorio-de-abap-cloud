@@ -88,22 +88,49 @@ CLASS zcl_dw_test16 IMPLEMENTATION.
 *       endif.
 
 "crear valoracion.
-   data(lo_valoracion) = new zcl_dw_manager16( ).
+*   data(lo_valoracion) = new zcl_dw_manager16( ).
+*
+*      ls_valoracion = VALUE #(
+*        id_valoracion = 1234567
+*        id_servicio = 1567
+*        puntuacion = 3
+*        comentario = 'awesome'
+*        fecha = '20220604' ).
+*
+*    lo_valoracion->crearvaloracion( EXPORTING i_valoracion = ls_valoracion impoRTING o_valido = lv_valido ).
+*
+*    if lv_valido = abap_true.
+*         out->write( 'La valoracion fue creada correctamente' ).
+*       else.
+*         out->write( 'La valoracion no pudo ser creada' ).
+*       endif.
 
-      ls_valoracion = VALUE #(
-        id_valoracion = 1234567
-        id_servicio = 1567
-        puntuacion = 3
-        comentario = 'awesome'
-        fecha = '20220604' ).
+"ver servicios paseador
 
-    lo_valoracion->crearvaloracion( EXPORTING i_valoracion = ls_valoracion impoRTING o_valido = lv_valido ).
+*    data(lo_servpaseador) = new zcl_dw_manager16( ).
+*    data lt_tablaserv type table of zservicios.
+*
+*    lo_servpaseador->get_servicios_paseador( EXPORTING i_id_paseador = 1 IMPORTING tablaserv = lt_tablaserv ).
+*
+*    out->write( lt_tablaserv ).
 
-    if lv_valido = abap_true.
-         out->write( 'La valoracion fue creada correctamente' ).
-       else.
-         out->write( 'La valoracion no pudo ser creada' ).
-       endif.
+    "ver servicios perro
+*    data(lo_servperros) = new zcl_dw_manager16( ).
+*    data lt_tablaserv type table of zservicios.
+*
+*    lo_servperros->get_servicios_perros( EXPORTING i_id_perro = 1 IMPORTING tablaserv = lt_tablaserv ).
+*
+*    out->write( lt_tablaserv ).
+
+"obtener media dado un id_paseador.
+
+    data(lo_valoracion) = new zcl_dw_manager16( ).
+
+      data lv_calculo type decfloat16.
+
+    lo_valoracion->get_media_valoracion( EXPORTING i_id_paseador = 2 IMPORTING media = lv_calculo ).
+
+    out->write( lv_calculo ).
 
   ENDMETHOD.
 ENDCLASS.

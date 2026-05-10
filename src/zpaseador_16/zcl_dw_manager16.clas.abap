@@ -5,7 +5,7 @@ CLASS zcl_dw_manager16 DEFINITION
   PUBLIC SECTION.
 
 
-    TYPES tt_servicios TYPE STANDARD TABLE OF zservicios WITH EMPTY KEY.
+    TYPES tt_servicios TYPE STANDARD TABLE OF zservicios." WITH EMPTY KEY.
 
     METHODS: "mejor hacerlo de la manera simplificada.
 
@@ -20,14 +20,14 @@ CLASS zcl_dw_manager16 DEFINITION
       crearvaloracion IMPORTING i_valoracion TYPE zvaloracion EXPORTING o_valido  TYPE abap_bool,
 
 
-                        get_servicios_paseador IMPORTING i_id_paseador TYPE zpaseador-id_paseador
+                        get_servicios_paseador IMPORTING i_id_paseador TYPE zservicios-id_paseador "recibe un ID de paseador y devuelve una tabla interna de servicios
                         EXPORTING tablaserv TYPE tt_servicios,
 
-                        get_servicios_perros IMPORTING i_id_perro TYPE zperros-id_perro
+                        get_servicios_perros IMPORTING i_id_perro TYPE zperros-id_perro  "recibe un ID de perro y devuelve una tabla interna de servicios
                         EXPORTING tablaserv TYPE tt_servicios,
 
                         get_media_valoracion IMPORTING i_id_paseador
-                        TYPE zpaseador-id_paseador EXPORTING valoracmedia TYPE decfloat16.
+                        TYPE zpaseador-id_paseador EXPORTING media TYPE decfloat16.
 
   PROTECTED SECTION.
 
@@ -152,23 +152,7 @@ ENDMETHOD.
     eNDIF.
 ENDMETHOD.
 
-
-
-  METHOD get_servicios_paseador.
-    SELECT * FROM zservicios WHERE id_paseador = @i_id_paseador INTO TABLE @tablaserv.
-  ENDMETHOD.
-
-  METHOD get_servicios_perros.
-    SELECT * FROM zservicios WHERE id_perro = @i_id_perro INTO TABLE @tablaserv.
-  ENDMETHOD.
-
-  METHOD get_media_valoracion.
-    " SELECT * FROM zvaloracion WHERE id_valoracion = @i_id_paseador INTO valoracmedia.
-  ENDMETHOD.
-
-
-
-  METHOD check_dueno_exists. "pregunto si existe algun registro con el id_dueno que recibe.
+METHOD check_dueno_exists. "pregunto si existe algun registro con el id_dueno que recibe.
     SELECT SINGLE @abap_true FROM zdueno WHERE id_dueno = @i_dueno into @data(sincoincidencia).
     IF sy-subrc = 0. "si devuelve algo, el dueño existe
       rv_ok = 1.
@@ -243,7 +227,21 @@ method check_estado.
       rv_ok = 3.
     ENDIF.
   ENDMETHOD.
-ENDCLASS.
 
 
+METHOD get_servicios_paseador.
+    SELECT * FROM zservicios WHERE id_paseador = @i_id_paseador INTO TABLE @tablaserv.
+  ENDMETHOD.
+
+  METHOD get_servicios_perros.
+    SELECT * FROM zservicios WHERE id_perro = @i_id_perro INTO TABLE @tablaserv.
+  ENDMETHOD.
+
+  METHOD get_media_valoracion.
+
+     SELECT AVG( puntuacion ) as valoracionmed FROM zvaloracion inNER joiN zservicios ON zvaloracion~id_servicio = zservicios~id_servicio
+     WHERE zservicios~id_paseador = @i_id_paseador INTO @DATA(lv_media).
+     media = lv_media.
+    ENDMETHOD.
+  ENDCLASS.
 
