@@ -12,13 +12,13 @@ ENDCLASS.
 
 
 
-CLASS zcl_bebidas16 IMPLEMENTATION.
+CLASS ZCL_BEBIDAS16 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
 
-  DELETE FROM zbebidas_16.
-INSERT zbebidas_16 FROM TABLE @( VALUE #(
+  DELETE FROM zbebi16.
+INSERT zbebi16 FROM TABLE @( VALUE #(
 ( codigo = '001' nombre = 'Ron Negrita' tipo = 'Ron' origen = 'Cuba' graduacion = 10 precio = '12.7' )
 ( codigo = '002' nombre = 'Nestea' tipo = 'Refresco' origen = 'USA' graduacion = 0 precio = 1 )
 ( codigo = '003' nombre = 'Bacardi' tipo = 'Ron' origen = 'ESP' graduacion = 15 precio = '18.8' )

@@ -47,7 +47,11 @@ CLASS zcl_productos_16 DEFINITION
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
-CLASS zcl_productos_16 IMPLEMENTATION.
+
+
+
+CLASS ZCL_PRODUCTOS_16 IMPLEMENTATION.
+
 
 method insertar.
 
@@ -69,6 +73,7 @@ method insertar.
     ENDIF.
 endMETHOD.
 
+
 method buscar. "busca por un id de producto
 
       data ls_producto type ZPRODUCTOS_16.
@@ -83,9 +88,12 @@ method buscar. "busca por un id de producto
     ENDIF.
 endMETHOD.
 
+
 method listar. "lo lista todo.
     select * from zproductos_16 into table @o_tab_productos.
 endMETHOD.
+
+
 method borrar.
 
       data ls_producto type ZPRODUCTOS_16.
@@ -97,6 +105,7 @@ method borrar.
       o_valido = abap_false.
     ENDIF.
 endMETHOD.
+
 
 method actualizar.
 
@@ -117,5 +126,4 @@ method actualizar.
       o_valido = abap_false.
     ENDIF.
 endMETHOD.
-
 ENDCLASS.

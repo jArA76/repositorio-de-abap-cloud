@@ -26,24 +26,22 @@ CLASS zcl_vehiculo16 DEFINITION
   PRIVATE SECTION.
     DATA: mv_num_averias TYPE i.
 
- ENDCLASS.
+ENDCLASS.
 
 
 
-CLASS zcl_vehiculo16 IMPLEMENTATION.
-METHOD constructor.
-    mv_matricula = i_matricula.
-    mv_marca = i_marca.
-    mv_anio_fabric = i_anyo.
-  ENDMETHOD.
+CLASS ZCL_VEHICULO16 IMPLEMENTATION.
 
-  METHOD arrancar.
-    mv_velocidad_actual = 0.
-  ENDMETHOD.
 
   METHOD frenar.
     mv_velocidad_actual = 0.
   ENDMETHOD.
+
+
+  METHOD calcular_impuesto.
+    rv_importe = 0.
+  ENDMETHOD.
+
 
   METHOD get_ficha.
     rs_ficha = |Matrícula: { mv_matricula } | &
@@ -52,9 +50,15 @@ METHOD constructor.
                |Velocidad: { mv_velocidad_actual } km/h|.
   ENDMETHOD.
 
-  METHOD calcular_impuesto.
-    rv_importe = 0.
+
+METHOD constructor.
+    mv_matricula = i_matricula.
+    mv_marca = i_marca.
+    mv_anio_fabric = i_anyo.
   ENDMETHOD.
 
 
+  METHOD arrancar.
+    mv_velocidad_actual = 0.
+  ENDMETHOD.
 ENDCLASS.

@@ -1,0 +1,52 @@
+managed implementation in class ZBP_R_PRO_16 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_PRO_16 alias ZrPro16
+persistent table ZPRO_16
+extensible
+draft table ZPRO_16_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( mandatory : create )
+   ID;
+
+  field ( readonly )
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   ID;
+
+
+  create;
+  update;
+  delete;
+  action modificarCampo result [1] $self;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZPRO_16 corresponding extensible
+  {
+    ID = ID;
+    Nombre = NOMBRE;
+    Profesion = PROFESION;
+    Salario = SALARIO;
+    IsActive = IS_ACTIVE;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+}

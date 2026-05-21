@@ -18,7 +18,10 @@ CLASS zcl_turismo16 DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
-CLASS zcl_turismo16 IMPLEMENTATION.
+
+
+CLASS ZCL_TURISMO16 IMPLEMENTATION.
+
 
 METHOD get_ficha.
     DATA(lv_ficha_padre) = super->get_ficha( ).  "declaro una variable en linea
@@ -30,6 +33,7 @@ METHOD get_ficha.
                |Carrocería: { mv_carroceria }|.
   ENDMETHOD.
 
+
   METHOD calcular_impuesto.
     IF mv_anio_fabric < 2000.
       rv_importe = '350.00'.
@@ -38,8 +42,8 @@ METHOD get_ficha.
     ENDIF.
   ENDMETHOD.
 
+
   METHOD set_carroceria.
     mv_carroceria = i_carroceria.
   ENDMETHOD.
-
 ENDCLASS.

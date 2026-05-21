@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_ejerciciotabla_jara IMPLEMENTATION.
+CLASS ZCL_EJERCICIOTABLA_JARA IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

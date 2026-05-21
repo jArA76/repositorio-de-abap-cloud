@@ -10,7 +10,9 @@ CLASS zcl_calculadora16_consola DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
-CLASS zcl_calculadora16_consola IMPLEMENTATION.
+
+
+CLASS ZCL_CALCULADORA16_CONSOLA IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

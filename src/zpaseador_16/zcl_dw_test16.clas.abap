@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_dw_test16 IMPLEMENTATION.
+CLASS ZCL_DW_TEST16 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

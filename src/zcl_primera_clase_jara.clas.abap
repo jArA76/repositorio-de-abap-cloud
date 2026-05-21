@@ -17,7 +17,9 @@ CLASS zcl_primera_clase_jara DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
-CLASS zcl_primera_clase_jara IMPLEMENTATION.
+
+
+CLASS ZCL_PRIMERA_CLASE_JARA IMPLEMENTATION.
 
 
   METHOD leer .
@@ -25,10 +27,12 @@ CLASS zcl_primera_clase_jara IMPLEMENTATION.
     o_numero = mv_numero.
   ENDMETHOD.
 
+
   METHOD escribir .
     " atributo = parametro
     mv_numero = i_numero.
   ENDMETHOD.
+
 
   METHOD if_oo_adt_classrun~main.
 

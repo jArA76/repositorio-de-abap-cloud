@@ -12,7 +12,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_persona_jara IMPLEMENTATION.
+CLASS ZCL_PERSONA_JARA IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
 

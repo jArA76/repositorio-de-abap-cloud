@@ -13,14 +13,16 @@ ENDCLASS.
 
 
 
-CLASS zcl_ejercicio_dom_jara IMPLEMENTATION.
+CLASS ZCL_EJERCICIO_DOM_JARA IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
 
     data lt_book type table of /DMO/BOOKING.
     data ls_book type /DMO/BOOKING.
     data lv_contador type i.
 
-    select * from /dmo/booking where booking_date = '20260107' into table @lt_book.
+    select * from /dmo/booking where booking_date = '20260208' into table @lt_book up to 20 rows.
 
     IF sy-subrc = 0. "si devuelve registros.
 
@@ -38,5 +40,4 @@ CLASS zcl_ejercicio_dom_jara IMPLEMENTATION.
 
 
   ENDMETHOD.
-
 ENDCLASS.

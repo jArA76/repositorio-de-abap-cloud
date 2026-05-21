@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_consola_alum16 IMPLEMENTATION.
+CLASS ZCL_CONSOLA_ALUM16 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

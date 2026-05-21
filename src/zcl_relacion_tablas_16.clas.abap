@@ -10,7 +10,9 @@ CLASS zcl_relacion_tablas_16 DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
-CLASS zcl_relacion_tablas_16 IMPLEMENTATION.
+
+
+CLASS ZCL_RELACION_TABLAS_16 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

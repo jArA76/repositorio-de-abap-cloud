@@ -1,4 +1,0 @@
-@EndUserText.label: 'service definition'
-define service ZUI_BEBIDAS_16 {
-  expose ZC_BEBIDAS_16 as Bebida;
-}

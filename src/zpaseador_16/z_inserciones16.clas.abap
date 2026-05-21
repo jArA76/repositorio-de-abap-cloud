@@ -16,7 +16,10 @@ CLASS z_inserciones16 DEFINITION
 
 ENDCLASS.
 
-CLASS z_inserciones16 IMPLEMENTATION.
+
+
+CLASS Z_INSERCIONES16 IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
     insert_duenos( out ).
@@ -59,7 +62,6 @@ CLASS z_inserciones16 IMPLEMENTATION.
   ENDMETHOD.
 
 
-
   METHOD insert_perros.
     DATA lt_perros TYPE TABLE OF zperros.
 
@@ -98,6 +100,7 @@ CLASS z_inserciones16 IMPLEMENTATION.
       out->write( '✘ Error insertando perros' ).
     ENDIF.
   ENDMETHOD.
+
 
  METHOD insert_paseadores.
     DATA lt_paseadores TYPE TABLE OF zpaseador.
@@ -224,5 +227,4 @@ CLASS z_inserciones16 IMPLEMENTATION.
       out->write( '✘ Error insertando valoraciones' ).
     ENDIF.
   ENDMETHOD.
-
 ENDCLASS.

@@ -31,7 +31,10 @@ CLASS zcl_dw_manager_copia DEFINITION
                    RETURNING VALUE(rv_exito) TYPE abap_bool.
 ENDCLASS.
 
-CLASS zcl_dw_manager_copia IMPLEMENTATION.
+
+
+CLASS ZCL_DW_MANAGER_COPIA IMPLEMENTATION.
+
 
   METHOD crear_servicio.
 
@@ -115,6 +118,7 @@ CLASS zcl_dw_manager_copia IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD check_estado.
 
     SELECT SINGLE * FROM ddcds_customer_domain_value_t(
@@ -129,14 +133,15 @@ CLASS zcl_dw_manager_copia IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD check_paseador.
 
   ENDMETHOD.
+
 
   METHOD get_servicios.
     SELECT * FROM zdw_servicio
         WHERE id_perro = @i_id_perro
         INTO TABLE @t_servicios.
   ENDMETHOD.
-
 ENDCLASS.

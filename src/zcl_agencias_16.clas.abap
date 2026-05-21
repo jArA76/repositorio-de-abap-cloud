@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_agencias_16 IMPLEMENTATION.
+CLASS ZCL_AGENCIAS_16 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

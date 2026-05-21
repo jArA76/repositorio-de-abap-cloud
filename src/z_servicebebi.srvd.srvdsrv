@@ -1,0 +1,9 @@
+@EndUserText.label: 'bebidas'
+@ObjectModel: {
+   leadingEntity: {
+   name: 'Z_C_BEBIDAS'}
+}
+define service Z_servicebebi
+  provider contracts odata_v4_ui {
+  expose z_c_bebidas as Bebida;
+}

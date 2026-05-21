@@ -29,29 +29,37 @@ CLASS zcl_calculadora_16 DEFINITION
         nombre type string.
 ENDCLASS.
 
-CLASS zcl_calculadora_16 IMPLEMENTATION.
+
+
+CLASS ZCL_CALCULADORA_16 IMPLEMENTATION.
+
 
 method constructor.
 valor = i_valor.
 nombre = i_nombre.
 endmethod.
 
+
 method get_valor.
 o_valor = valor.
 endmethod.
+
 
 method get_nombre.
 o_nombre = nombre.
 endmethod.
 
+
 method set_nombre.
 nombre = i_nombre.
 endmethod.
+
 
 method sumar.
 valor = valor + i_valor.
 
 endmethod.
+
 
 method restar.
 
@@ -59,11 +67,13 @@ valor = valor - i_valor.
 
 endmethod.
 
+
 method multiplicar.
 
 valor = valor * i_valor.
 
 endmethod.
+
 
 method dividir.
 if i_valor = 0.
@@ -75,8 +85,8 @@ endif.
 
 endmethod.
 
+
 method reset.
 valor = 0.
 endmethod.
-
 ENDCLASS.

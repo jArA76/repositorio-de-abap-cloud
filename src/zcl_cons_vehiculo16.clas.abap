@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_cons_vehiculo16 IMPLEMENTATION.
+CLASS ZCL_CONS_VEHICULO16 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

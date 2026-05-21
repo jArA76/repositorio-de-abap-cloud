@@ -12,7 +12,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_consempleado16 IMPLEMENTATION.
+CLASS ZCL_CONSEMPLEADO16 IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
 
@@ -41,31 +42,3 @@ CLASS zcl_consempleado16 IMPLEMENTATION.
 
   ENDMETHOD.
 ENDCLASS.
-
-""consola de luis
-
-*DATA(lo_empleado) = NEW zcl_empleado_00(  i_dni = 'A'
-*                                              i_salario = 10000
-*                                              i_nombre = 'Luis' ).
-*
-*    lo_empleado->mostrar_ficha( IMPORTING o_ficha = DATA(lv_ficha) ).
-*    out->write( lv_ficha ).
-*
-*
-*    DATA(lo_empleadof) = NEW zcl_empleadof_00(  i_dni = 'B'
-*                                              i_salario = 10000
-*                                              i_nombre = 'Luis'
-*                                              i_antiguedad = 5 ).
-*
-*    lo_empleadof->mostrar_ficha( IMPORTING o_ficha = lv_ficha ).
-*    out->write( lv_ficha ).
-*
-*    DATA(lo_empleadot) = NEW zcl_empleadot_00(  i_dni = 'C'
-*                                              i_salario = 10000
-*                                              i_nombre = 'Luis'
-*                                              i_horas_t = 50
-*                                              i_precio_h = 23 ).
-*
-*    lo_empleadot->mostrar_ficha( IMPORTING o_ficha = lv_ficha ).
-*    out->write( lv_ficha ).
-

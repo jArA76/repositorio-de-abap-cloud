@@ -57,7 +57,44 @@ CLASS zcl_dw_manager16 DEFINITION
 
 ENDCLASS.
 
-CLASS zcl_dw_manager16 IMPLEMENTATION.
+
+
+CLASS ZCL_DW_MANAGER16 IMPLEMENTATION.
+
+
+  METHOD get_servicios_perros.
+    SELECT * FROM zservicios WHERE id_perro = @i_id_perro INTO TABLE @tablaserv.
+  ENDMETHOD.
+
+
+  METHOD get_media_valoracion.
+
+     SELECT AVG( puntuacion ) as valoracionmed FROM zvaloracion inNER joiN zservicios ON zvaloracion~id_servicio = zservicios~id_servicio
+     WHERE zservicios~id_paseador = @i_id_paseador INTO @DATA(lv_media).
+     media = lv_media.
+    ENDMETHOD.
+
+
+METHOD check_dueno_exists. "pregunto si existe algun registro con el id_dueno que recibe.
+    SELECT SINGLE @abap_true FROM zdueno WHERE id_dueno = @i_dueno into @data(sincoincidencia).
+    IF sy-subrc = 0. "si devuelve algo, el dueño existe
+      rv_ok = 1.
+    ELSE.
+      rv_ok = 2.
+    ENDIF.
+  ENDMETHOD.
+
+
+  METHOD check_perro_exists.
+    SELECT SINGLE @abap_true FROM zperros WHERE id_perro = @i_perro into @data(sincoincidencia).
+   IF sy-subrc = 0. "si devuelve algo, el id_perro existe
+      rv_ok = 1.
+    ELSE.
+      rv_ok = 2.
+    ENDIF.
+
+  ENDMETHOD.
+
 
  METHOD crearservicio.
    IF check_estado( i_servicio-estado ) = 1 AND check_servicio( i_servicio-tipo_servicio ) = 1 AND check_paseador_exists( i_servicio-id_paseador ) = 1
@@ -73,6 +110,89 @@ CLASS zcl_dw_manager16 IMPLEMENTATION.
       return.
       ENDIF.
  ENDMETHOD.
+
+
+  METHOD check_servicio_exists.
+    SELECT SINGLE @abap_true FROM zservicios WHERE id_servicio = @i_servicio and estado = 'CO' into @data(sincoincidencia).
+    IF sy-subrc = 0. "si el servicio existe y tiene valoracion completada,es decir, si lo encuentra, lo siguiente que hace es buscar en zvaloracion si ya esta el servicio valorado.
+        select single * from zvaloracion where id_servicio = @i_servicio into @data(sicoincidencia). "compruebo si ya esta valorado
+          IF sy-subrc = 0.
+             rv_ok = 1.
+             ELSE. "si no lo encuentra.
+             rv_ok = 2.
+        endIF.
+        else.
+      rv_ok = 3.
+    ENDIF.
+  ENDMETHOD.
+
+
+  method check_tamano.
+
+    SELECT SINGLE * FROM ddcds_customer_domain_value_t( p_domain_name = 'ZTAMANO16' )
+        WHERE value_low = @i_tamano INTO @DATA(ls_test).
+    IF sy-subrc = 0. "si el tamaño existe.
+      rv_ok = 1.
+    ELSE.
+      rv_ok = 2.
+    ENDIF.
+
+  ENDMETHOD.
+
+
+  METHOD check_servicio. "comprueba que el servicio exista, no tiene porque estar completado.
+    SELECT SINGLE * FROM ddcds_customer_domain_value_t( p_domain_name = 'ZSERVICIO16' )
+        WHERE value_low = @i_servicio INTO @DATA(ls_test).
+    IF sy-subrc = 0. "si el servicio existe.
+      rv_ok = 1.
+    ELSE.
+      rv_ok = 2.
+    ENDIF.
+  ENDMETHOD.
+
+
+method check_estado.
+    SELECT SINGLE * FROM ddcds_customer_domain_value_t( p_domain_name = 'ZESTADO16' )
+        WHERE value_low = @i_estado INTO @DATA(ls_test).
+    IF sy-subrc = 0. "si el estado existe.
+      rv_ok = 1.
+    ELSE.
+      rv_ok = 2.
+    ENDIF.
+
+  ENDMETHOD.
+
+
+  METHOD check_paseador_exists.
+    SELECT SINGLE @abap_true FROM zpaseador WHERE id_paseador = @i_paseador into @data(sincoincidencia).
+    IF sy-subrc = 0. "si devuelve algo, el dueño existe
+      rv_ok = 1.
+    ELSE.
+      rv_ok = 2.
+    ENDIF.
+  ENDMETHOD.
+
+
+  METHOD creaperro.
+
+    IF check_dueno_exists( i_perro-id_dueno ) = 1 AND check_perro_exists( i_perro-id_perro ) = 2 AND check_tamano( i_perro-tamano ) = 1.
+      "si el dueño existe y el id_perro no existe y el tamaño existe en la lista existente.....crealo.
+      " o_valido = abap_false.
+
+      INSERT zperros FROM @i_perro.
+
+      IF sy-subrc = 0. " Ha ido bien
+        o_valido = abap_true.
+      ELSE.
+        o_valido = abap_false.
+      ENDIF.
+    ELSE.
+      o_valido = abap_false.
+      RETURN.
+
+    ENDIF.
+  ENDMETHOD.
+
 
   METHOD creardueno.
   "o_valido = abap_true.
@@ -96,25 +216,6 @@ CLASS zcl_dw_manager16 IMPLEMENTATION.
     endIF.
   ENDMETHOD.
 
-  METHOD creaperro.
-
-    IF check_dueno_exists( i_perro-id_dueno ) = 1 AND check_perro_exists( i_perro-id_perro ) = 2 AND check_tamano( i_perro-tamano ) = 1.
-      "si el dueño existe y el id_perro no existe y el tamaño existe en la lista existente.....crealo.
-      " o_valido = abap_false.
-
-      INSERT zperros FROM @i_perro.
-
-      IF sy-subrc = 0. " Ha ido bien
-        o_valido = abap_true.
-      ELSE.
-        o_valido = abap_false.
-      ENDIF.
-    ELSE.
-      o_valido = abap_false.
-      RETURN.
-
-    ENDIF.
-  ENDMETHOD.
 
   METHOD crearpaseador.
   IF check_paseador_exists( i_paseador-id_paseador ) = 1.
@@ -136,6 +237,7 @@ CLASS zcl_dw_manager16 IMPLEMENTATION.
  endIF.
 ENDMETHOD.
 
+
  METHOD crearvaloracion.
 
    if check_servicio_exists( i_valoracion-id_servicio ) = 2 aND  i_valoracion-puntuacion betweEN '1' and '5'.
@@ -152,96 +254,8 @@ ENDMETHOD.
     eNDIF.
 ENDMETHOD.
 
-METHOD check_dueno_exists. "pregunto si existe algun registro con el id_dueno que recibe.
-    SELECT SINGLE @abap_true FROM zdueno WHERE id_dueno = @i_dueno into @data(sincoincidencia).
-    IF sy-subrc = 0. "si devuelve algo, el dueño existe
-      rv_ok = 1.
-    ELSE.
-      rv_ok = 2.
-    ENDIF.
-  ENDMETHOD.
-
-
-  METHOD check_perro_exists.
-    SELECT SINGLE @abap_true FROM zperros WHERE id_perro = @i_perro into @data(sincoincidencia).
-   IF sy-subrc = 0. "si devuelve algo, el id_perro existe
-      rv_ok = 1.
-    ELSE.
-      rv_ok = 2.
-    ENDIF.
-
-  ENDMETHOD.
-
-  method check_tamano.
-
-    SELECT SINGLE * FROM ddcds_customer_domain_value_t( p_domain_name = 'ZTAMANO16' )
-        WHERE value_low = @i_tamano INTO @DATA(ls_test).
-    IF sy-subrc = 0. "si el tamaño existe.
-      rv_ok = 1.
-    ELSE.
-      rv_ok = 2.
-    ENDIF.
-
-  ENDMETHOD.
-
-  METHOD check_paseador_exists.
-    SELECT SINGLE @abap_true FROM zpaseador WHERE id_paseador = @i_paseador into @data(sincoincidencia).
-    IF sy-subrc = 0. "si devuelve algo, el dueño existe
-      rv_ok = 1.
-    ELSE.
-      rv_ok = 2.
-    ENDIF.
-  ENDMETHOD.
-
-method check_estado.
-    SELECT SINGLE * FROM ddcds_customer_domain_value_t( p_domain_name = 'ZESTADO16' )
-        WHERE value_low = @i_estado INTO @DATA(ls_test).
-    IF sy-subrc = 0. "si el estado existe.
-      rv_ok = 1.
-    ELSE.
-      rv_ok = 2.
-    ENDIF.
-
-  ENDMETHOD.
-
-  METHOD check_servicio. "comprueba que el servicio exista, no tiene porque estar completado.
-    SELECT SINGLE * FROM ddcds_customer_domain_value_t( p_domain_name = 'ZSERVICIO16' )
-        WHERE value_low = @i_servicio INTO @DATA(ls_test).
-    IF sy-subrc = 0. "si el servicio existe.
-      rv_ok = 1.
-    ELSE.
-      rv_ok = 2.
-    ENDIF.
-  ENDMETHOD.
-
-  METHOD check_servicio_exists.
-    SELECT SINGLE @abap_true FROM zservicios WHERE id_servicio = @i_servicio and estado = 'CO' into @data(sincoincidencia).
-    IF sy-subrc = 0. "si el servicio existe y tiene valoracion completada,es decir, si lo encuentra, lo siguiente que hace es buscar en zvaloracion si ya esta el servicio valorado.
-        select single * from zvaloracion where id_servicio = @i_servicio into @data(sicoincidencia). "compruebo si ya esta valorado
-          IF sy-subrc = 0.
-             rv_ok = 1.
-             ELSE. "si no lo encuentra.
-             rv_ok = 2.
-        endIF.
-        else.
-      rv_ok = 3.
-    ENDIF.
-  ENDMETHOD.
-
 
 METHOD get_servicios_paseador.
     SELECT * FROM zservicios WHERE id_paseador = @i_id_paseador INTO TABLE @tablaserv.
   ENDMETHOD.
-
-  METHOD get_servicios_perros.
-    SELECT * FROM zservicios WHERE id_perro = @i_id_perro INTO TABLE @tablaserv.
-  ENDMETHOD.
-
-  METHOD get_media_valoracion.
-
-     SELECT AVG( puntuacion ) as valoracionmed FROM zvaloracion inNER joiN zservicios ON zvaloracion~id_servicio = zservicios~id_servicio
-     WHERE zservicios~id_paseador = @i_id_paseador INTO @DATA(lv_media).
-     media = lv_media.
-    ENDMETHOD.
-  ENDCLASS.
-
+ENDCLASS.

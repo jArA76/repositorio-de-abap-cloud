@@ -30,7 +30,9 @@ CLASS zcl_tabla_alum16 DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_tabla_alum16 IMPLEMENTATION.
+
+CLASS ZCL_TABLA_ALUM16 IMPLEMENTATION.
+
 
   METHOD insertar_1.
 
@@ -55,6 +57,7 @@ CLASS zcl_tabla_alum16 IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD insertar_2.
 
     " Se añade a la BD
@@ -67,5 +70,4 @@ CLASS zcl_tabla_alum16 IMPLEMENTATION.
     ENDIF.
 
   ENDMETHOD.
-
 ENDCLASS.

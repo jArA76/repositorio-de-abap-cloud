@@ -11,7 +11,8 @@ CLASS zcl_bombilla_jara DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bombilla_jara IMPLEMENTATION.
+
+CLASS ZCL_BOMBILLA_JARA IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

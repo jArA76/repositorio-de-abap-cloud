@@ -20,7 +20,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_camion_16 IMPLEMENTATION.
+CLASS ZCL_CAMION_16 IMPLEMENTATION.
+
 
 METHOD get_ficha.
     DATA(lv_ficha_padre) = super->get_ficha( ).
@@ -33,6 +34,7 @@ METHOD get_ficha.
                |Ejes: { mv_num_ejes } | &
                |Remolque: { lv_remolque }|.
   ENDMETHOD.
+
 
   METHOD calcular_impuesto.
     rv_importe = mv_tonelaje * 120.

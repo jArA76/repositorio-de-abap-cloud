@@ -1,0 +1,66 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Codigo',
+    typeNamePlural: 'Codigos',
+    title: {
+        type: #STANDARD,
+        value: 'Codigo'
+    },
+    description: {
+        type: #STANDARD,
+        value: 'Codigo'
+    }
+}
+annotate entity z_c_bebidas with 
+{  
+@UI.facet: [ { id:'Bebida',
+                 purpose: #STANDARD,
+                 type: #IDENTIFICATION_REFERENCE,
+                 label:'Bebida',
+                 position: 10 } ]
+ 
+  @UI: { lineItem: [{ position: 10,
+                      importance : #HIGH }], //HIGH es por que es compatible en todos los dipositivos
+         identification: [{ position: 10,
+                            label: 'Bebida' }], //Se coge de la descripcion del elemento de datos
+         selectionField: [{ position:10 }] }
+  Nombre;
+
+  @UI: { lineItem: [{ position: 20,
+                    importance : #HIGH }],
+       identification: [{ position: 20 }],
+       selectionField: [{ position: 20 }] }
+  Tipo;
+
+  @UI: { lineItem: [{ position: 30,
+                    importance : #HIGH }],
+       identification: [{ position: 30 }],
+       selectionField: [{ position: 30 }] }
+  Origen;
+
+  @UI: { lineItem: [{ position: 40,
+                    importance : #HIGH }],
+       identification: [{ position: 40 }]}
+  Graduacion;
+
+  @UI: { lineItem: [{ position: 50,
+                    importance : #HIGH }],
+       identification: [{ position: 50 }]}
+  Precio;
+
+ @UI.hidden: true
+  LocalCreatedBy;
+
+  @UI.hidden: true
+  LocalCreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  LastChangedAt;
+    
+}

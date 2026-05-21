@@ -27,28 +27,36 @@ CLASS zcl_cuadro_16 DEFINITION
         ano type i.
 ENDCLASS.
 
-CLASS zcl_cuadro_16 IMPLEMENTATION.
+
+
+CLASS ZCL_CUADRO_16 IMPLEMENTATION.
+
 
   METHOD constructor.
     titulo = i_tituloc.
     ano = i_anoc.
   ENDMETHOD.
 
+
   method get_titulo. "mete lo que haya en titulo y lo pasa a o_titulo, exporta o_titulo.
     o_titulo = titulo.
   endmethod.
+
 
   method get_ano. "exporta o_ano.
     o_ano = ano.
   endmethod.
 
+
   method set_titulo.
     titulo = i_titulo.
   endmethod.
 
+
   method set_ano.
     ano = i_ano.
   endmethod.
+
 
   method esta_en_exposicion.
     if ano > 1800.
@@ -57,6 +65,7 @@ CLASS zcl_cuadro_16 IMPLEMENTATION.
       o_esta = abap_false.
     endif.
   endmethod.
+
 
   method mostrar_Ficha.
     o_titulo = titulo.
@@ -67,5 +76,4 @@ CLASS zcl_cuadro_16 IMPLEMENTATION.
       o_esta = 'Almacenado'.
     endif.
   endmethod.
-
 ENDCLASS.

@@ -10,7 +10,10 @@ CLASS zcl_consproduct_16 DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
-CLASS zcl_consproduct_16 IMPLEMENTATION.
+
+
+CLASS ZCL_CONSPRODUCT_16 IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
 
