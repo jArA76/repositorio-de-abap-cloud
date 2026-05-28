@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZR_LIB_LIBRO_16'
+@MappingRole: true
+define role ZR_LIB_LIBRO_16 {
+  grant select on ZR_LIB_LIBRO_16
+  where TRUE;
+}

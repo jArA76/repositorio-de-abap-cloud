@@ -1,0 +1,11 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "SAP Object Node Type ZLIB_LIBRO_16",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "name": "ZLIB_LIBRO_16",
+  "sapObjectType": "ZLIB_LIBRO_16",
+  "rootNode": true
+}

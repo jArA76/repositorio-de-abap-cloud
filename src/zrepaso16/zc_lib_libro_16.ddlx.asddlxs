@@ -1,0 +1,167 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'Titulo'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'Autor'
+annotate view ZC_LIB_LIBRO_16 with
+{
+  @EndUserText.label: 'ID del Libro'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'ID del Libro'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'ID del Libro'
+  } ]
+//  @UI.selectionField: [ {
+//    position: 10 
+//  } ]
+  LibroID;
+  
+  @EndUserText.label: 'Titulo'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Titulo'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'Titulo'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  Titulo;
+  
+  @EndUserText.label: 'Autor'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Autor'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Autor'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  Autor;
+  
+  @EndUserText.label: 'Genero'
+  @UI.identification: [ {
+    position: 11 , 
+    label: 'Genero'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Genero'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  Genero;
+  
+  @EndUserText.label: 'Número de Páginas'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Número de Páginas'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Número de Páginas'
+  } ]
+//  @UI.selectionField: [ {
+//    position: 50 
+//  } ]
+  NumPaginas;
+  
+  @EndUserText.label: 'Disponible'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Disponible'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'Disponible'
+  } ]
+//  @UI.selectionField: [ {
+//    position: 60 
+//  } ]
+  Disponible;
+  
+  @EndUserText.label: 'Estado'
+  @UI.identification: [ {
+    position: 12 , 
+    label: 'Estado'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'Estado'
+  } ]
+//  @UI.selectionField: [ {
+//    position: 70 
+//  } ]
+  Estado;
+  
+//  @UI.identification: [ {
+//    position: 80 
+//  } ]
+////  @UI.lineItem: [ {
+////    position: 80 
+////  } ]
+//  @UI.selectionField: [ {
+//    position: 80 
+//  } ]
+//  CreatedBy;
+  
+//  @UI.identification: [ {
+//    position: 90 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 90 
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 90 
+//  } ]
+//  CreatedAt;
+  
+//  @UI.identification: [ {
+//    position: 100 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 100 
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 100 
+//  } ]
+//  LastChangedBy;
+  
+//  @UI.identification: [ {
+//    position: 110 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 110 
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 110 
+//  } ]
+//  LastChangedAt;
+  
+//  @UI.identification: [ {
+//    position: 120 
+//  } ]
+//  @UI.lineItem: [ {
+//    position: 120 
+//  } ]
+//  @UI.selectionField: [ {
+//    position: 120 
+//  } ]
+//  LocalLastChangedAt;
+}

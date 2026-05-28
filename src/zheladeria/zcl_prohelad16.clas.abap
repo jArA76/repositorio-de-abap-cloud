@@ -1,0 +1,24 @@
+CLASS zcl_prohelad16 DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+
+    INTERFACES zif_vendible16 .
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zcl_prohelad16 IMPLEMENTATION.
+
+
+  METHOD zif_vendible16~calcular_precio.
+  ENDMETHOD.
+
+
+  METHOD zif_vendible16~describir.
+  ENDMETHOD.
+ENDCLASS.
