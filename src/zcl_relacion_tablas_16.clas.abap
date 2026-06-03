@@ -35,7 +35,7 @@ CLASS ZCL_RELACION_TABLAS_16 IMPLEMENTATION.
             flight_price from /dmo/booking into table @data(lt_booking) up to 20 rows.
 
     IF sy-subrc = 0.
-
+         out->write( 'la select a ido bien' ).
     ENDIF.
 
     select travel_id, agency_id from /dmo/travel into table @data(lt_travel).

@@ -27,7 +27,7 @@ CLASS ZCL_CON_DIA14_5 IMPLEMENTATION.
 *     out->write( lt_prueba ).
 
     DATA lv_hoy TYPE d.
-    lv_hoy = '20260515'.
+    lv_hoy = '19760630'.
     SELECT SINGLE FROM /dmo/carrier
             FIELDS
                " is_valid( @lv_hoy ) AS valido,

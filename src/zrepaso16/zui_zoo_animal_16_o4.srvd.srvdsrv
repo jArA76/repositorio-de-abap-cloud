@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_ZOO_ANIMAL_16'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_ZOO_ANIMAL_16'
+  }
+}
+define service ZUI_ZOO_ANIMAL_16_O4 provider contracts odata_v4_ui {
+  expose ZC_ZOO_ANIMAL_16;
+}
