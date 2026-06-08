@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS z_prueba_simplif IMPLEMENTATION.
+CLASS Z_PRUEBA_SIMPLIF IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
@@ -27,7 +27,8 @@ CLASS z_prueba_simplif IMPLEMENTATION.
       out->write( |Flight: { lo_flight->carrier_id } { lo_flight->connection_id }| ).
 
       " 4. Llamar al método de estructura
-      DATA(ls_details) = lo_flight->get_connection_details( ).
+     " DATA(ls_details) = lo_flight->get_connection_details( ).
+     DATA(ls_details) = lo_flight->get_connection_details( ).
 
       " 5. Mostrar datos de la estructura
       out->write( |From: { ls_details-airport_from } To: { ls_details-airport_to }| ).

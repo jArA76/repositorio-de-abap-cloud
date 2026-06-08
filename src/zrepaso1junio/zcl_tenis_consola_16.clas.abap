@@ -30,7 +30,8 @@ CLASS zcl_tenis_consola_16 IMPLEMENTATION.
  "   out->write( 'Torneo de Tenis — Debug Exercise' ).
 
     TRY.
-      lo_torneo = NEW zcl_torneo_tenis_16( iv_nombre_torneo =  'Roland Garros 2026' ).
+      lo_torneo = NEW zcl_torneo_tenis_16( iv_nombre_torneo =  'Roland Garros 2026' ). "al llamar a la clase, se llama directamente al constructor y hay que pasarle
+                                                                                        "un parametro
 
 
       lo_j1 = NEW zcl_jugador_profesional_16(
