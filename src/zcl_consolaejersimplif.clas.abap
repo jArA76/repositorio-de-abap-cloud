@@ -12,11 +12,11 @@ ENDCLASS.
 
 
 
-CLASS ZCL_CONSOLAEJERSIMPLIF IMPLEMENTATION.
+CLASS zcl_consolaejersimplif IMPLEMENTATION.
 
 
 
-  METHOD IF_OO_ADT_CLASSRUN~MAIN.
+  METHOD if_oo_adt_classrun~main.
 
 
 *SELECT FROM /lrn/passflight
@@ -24,8 +24,8 @@ CLASS ZCL_CONSOLAEJERSIMPLIF IMPLEMENTATION.
 *     WHERE carrier_id    = 'LH' into table @DATA(datos).
 
 
-select count(*) from /lrn/passflight where carrier_id = 'LH' into @data(lc).
-     out->write( lc ).
+    SELECT COUNT(*) FROM /lrn/passflight WHERE carrier_id = 'LH' INTO @DATA(lc).
+    out->write( lc ).
 
 
 
