@@ -10,7 +10,11 @@ private section.
 
 ENDCLASS.
 
+
+
 CLASS Z_EXPERIS_JARA IMPLEMENTATION.
+
+
   METHOD IF_OO_ADT_CLASSRUN~MAIN.
 *  data lv_lca type i.
 *  data lv_scar type c.
@@ -41,25 +45,26 @@ data lv_cuenta type i.
 *   exit.
 *   endIF.
 *   endDO.
-do.
-lv_cuenta = sy-index.
-data(lv_resto) = lv_cuenta mod 2.
-if ( lv_resto = 0 ).
-continue.
-endIF.
-
-out->write( lv_cuenta ).
-
-if lv_cuenta >= 10.
-exit.
-endIF.
-
-endDO.
+"otro ejemplo
+*do.
+*lv_cuenta = sy-index."sy-index lleva el numero de las vuentas que va dando el bucle.
+*"en la primera vuelta el sy-index es valor 1.
+*data(lv_resto) = lv_cuenta mod 2.
+*if ( lv_resto = 0 )."si el resto de la division es 0.
+*continue.  "hace el siguiente ciclo de if y no cuenta para abajo.
+*endIF.
+*
+*out->write( lv_cuenta ).
+*
+*if lv_cuenta >= 10.
+*exit.
+*endIF.
+*
+*endDO.
 
 
 
 
 
   ENDMETHOD.
-
 ENDCLASS.

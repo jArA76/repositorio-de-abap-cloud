@@ -13,7 +13,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_calc_jara IMPLEMENTATION.
+CLASS ZCL_CALC_JARA IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
 
   data lv_num1 type i.
@@ -52,10 +54,5 @@ CLASS zcl_calc_jara IMPLEMENTATION.
 
     endCASE.
 
-
-
-
-
   ENDMETHOD.
-
 ENDCLASS.

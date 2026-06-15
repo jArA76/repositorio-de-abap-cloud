@@ -11,7 +11,10 @@ CLASS zcl_experis_luis DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
-CLASS zcl_experis_luis IMPLEMENTATION.
+
+
+CLASS ZCL_EXPERIS_LUIS IMPLEMENTATION.
+
 
 method if_oo_adt_classrun~main.
 
@@ -97,5 +100,4 @@ endwhile.
 out->write( | el total es: { lv_zum } | ).
 
 ENDMETHOD.
-
 ENDCLASS.

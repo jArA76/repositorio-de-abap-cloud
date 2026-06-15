@@ -10,7 +10,10 @@ CLASS zcl_estructura DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_estructura IMPLEMENTATION.
+
+CLASS ZCL_ESTRUCTURA IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
 
     data lv_var1 type i.
@@ -76,5 +79,4 @@ out->write( ls_empleado ).
 
 
   ENDMETHOD.
-
 ENDCLASS.

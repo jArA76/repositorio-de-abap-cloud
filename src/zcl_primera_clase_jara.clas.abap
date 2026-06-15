@@ -4,15 +4,7 @@ CLASS zcl_primera_clase_jara DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-    data mv_numero type i.
-    INTERFACES if_oo_adt_classrun .
-
-         METHODS: leer EXPORTING o_numero TYPE i,
-             " recupera el valor del atributo y lo asigna a un parametro
-
-                  escribir IMPORTING i_numero TYPE i.
-             " asigna al atributo el valor del parametro
-
+  INTERFACES if_oo_adt_classrun.
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -22,30 +14,24 @@ ENDCLASS.
 CLASS ZCL_PRIMERA_CLASE_JARA IMPLEMENTATION.
 
 
-  METHOD leer .
-    "parametro = atributo
-    o_numero = mv_numero.
-  ENDMETHOD.
-
-
-  METHOD escribir .
-    " atributo = parametro
-    mv_numero = i_numero.
-  ENDMETHOD.
-
-
   METHOD if_oo_adt_classrun~main.
 
-    DATA lv_numero TYPE i.
-    DATA lo_numero TYPE REF TO zcl_primera_clase_jara.
+    data lv_id type i value 8.
 
-    CREATE OBJECT lo_numero.
+    data: lv type string,              "daclara varias variables
+          lvnamber type i,
+          lv_elementdata type zde_id_jara,
+          lv_tabla type /dmo/agency.
 
-    lo_numero->escribir( EXPORTING i_numero = 20 ).
-    out->write( lo_numero->mv_numero ).
+          lv = 'hola'.
 
-    lo_numero->leer( IMPORTING o_numero = lv_numero ).
-    out->write( lv_numero ).
+          lv_elementdata = 'eso'.
+
+      constants lc_constante type i value 59.     "para poner comentario a todo es con control < y para quitarlo con control shift <
+
+    "para mostrar 2 out->write( | { lv } { lv_elementdata } | ).
+     out->write(  lv_tabla   ).
+
 
   ENDMETHOD.
 ENDCLASS.
